@@ -21,23 +21,22 @@ TAppointment Calendar[MAX];
 
 void createAppointment()
 {
-    if(countAppointment<= MAX)
+    if (countAppointment < MAX)
     {
-        TAppointment appointment;
+        TAppointment *appointment = Calendar + countAppointment;
         printf("\nErfassung eines neuen Termins\n");
         printLine('=', 29);
         
-        getDate("\n\nDatum: ", &(appointment.datum));
-        getTime("Uhrzeit: ", &appointment.zeit);
-        getText("Beschreibung: ", 100, &appointment.Description, 1);
-        getText("Ort: ", 15, &(appointment.Place), 0);
+        getDate("\n\nDatum: ", &(appointment->datum));
+        getTime("Uhrzeit: ", &appointment->zeit);
+        getText("Beschreibung: ", 100, &appointment->Description, 1);
+        getText("Ort: ", 15, &(appointment->Place), 0);
         
-        appointment.Duration = (TTime *) malloc(sizeof(TTime));
-        getTime("Dauer: ", appointment.Duration);
+        appointment->Duration = (TTime *) malloc(sizeof(TTime));
+        getTime("Dauer: ", appointment->Duration);
         
-        Calendar[countAppointment] = appointment;
         countAppointment++;
-    }else {
+    } else {
         printf("Speicher ist Voll");
     }
 }
@@ -94,7 +93,7 @@ void listCalendar()
    */
     
     if (i == 0 || i < countAppointment) {
-        printf("Zurzeit gibt kein Termin zur Verfügung!!!\n");
+        printf("Zurzeit gibt keine Termine zur Verfügung!!!\n");
     }
         
     waitForEnter();
