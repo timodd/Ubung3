@@ -45,7 +45,7 @@ void printDate(TAppointment * Date)
 void printTime(TAppointment * time)
 {
     if(time->zeit.Second > 0){
-        printf("\n\t%02i:%02i:%02i ->", time->zeit.Second, time->zeit.Minute, time->zeit.Second);
+        printf("\n\t%02i:%02i:%02i ->", time->zeit.Hour, time->zeit.Minute, time->zeit.Second);
     }else {
         printf("\n\t%02i:%02i ->", time->zeit.Hour, time->zeit.Minute);
     }
